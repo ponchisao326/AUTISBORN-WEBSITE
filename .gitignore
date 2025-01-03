@@ -1,3 +1,4 @@
 /dist/
 /target/
-.md
+.idea/vcs.xml
+*.md
