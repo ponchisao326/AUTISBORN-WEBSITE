@@ -1,11 +1,18 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: Arial, Helvetica, sans-serifrial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
 }
 
 header {
     background-color: #1F2937;
+    margin: 0;
+    padding: 0;
 }
 
 .header {
@@ -31,7 +38,68 @@ header {
     font-weight: bold;
 }
 
-a {
-    text-decoration: none;
-    color: #fff;
+.width-section {
+    background-color: #141B2A;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.actualizaciones-panel {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 1rem;
+    padding-bottom: 1rem;
+}
+
+.actualizaciones-title {
+    display: flex;
+    gap: 1rem;
+    width: 95%;
+    margin: 0 auto;
+    align-items: end;
+}
+
+.actualizaciones-title h1 {
+    padding: 0;
+    margin: .8rem 0 0;
+}
+
+.actualizaciones-title img {
+    width: 2%;
+    object-fit: contain;
+    height: auto;
+}
+
+.actualizaciones-posts {
+    width: 95%;
+    margin: 0 auto;
+    padding-top: .5rem;
+}
+
+.actualizaciones-posts h1 {
+    font-size: large;
+}
+
+.actualizaciones-posts p {
+    font-size: medium;
+    color: grey;
+}
+
+.estadisticas-posts {
+    width: 95%;
+    margin: 0 auto;
+    padding-top: .5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.estadisticas-posts h1 {
+    font-size: large;
+}
+
+.estadisticas-posts p {
+    font-size: medium;
+    color: grey;
 }

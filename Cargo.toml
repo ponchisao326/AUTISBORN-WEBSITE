@@ -16,3 +16,4 @@ serde = { version = "1.0.171", features = ["derive"] }
 reqwest = { version = "0.12.12", features = ["json"] }
 wasm-bindgen-futures = "0.4.37"
 js-sys = "0.3.64"
+web-sys = "0.3.76"
