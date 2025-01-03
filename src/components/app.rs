@@ -1,9 +1,25 @@
 use yew::prelude::*;
+use crate::components::post::{Post, fetch_posts};
 
 #[function_component]
 pub fn App() -> Html {
 
-    let jsonTitle1: &str = "hola";
+    let posts = use_state(Vec::<Post>::new);
+
+    {
+        let posts = posts.clone();
+        use_effect_with_deps(
+            move |_| {
+                wasm_bindgen_futures::spawn_local(async move {
+                    if let Ok(fetched_posts) = fetch_posts().await {
+                        posts.set(fetched_posts);
+                    }
+                });
+                || ()
+            },
+            (), // Dependencies (empty because it only runs once)
+        );
+    }
 
     html! {
         <main>
@@ -31,9 +47,16 @@ pub fn App() -> Html {
                         <h1> {"Actualizaciones del Servidor"}</h1>
                     </div>
                     <div class="actualizaciones-posts">
-                        <div class="actualizaciones-post-1">
-                            <h1> {jsonTitle1} </h1>
-                        </div>
+                        {
+                            posts.iter().map(|post| {
+                                html! {
+                                    <div class="actualizaciones-post">
+                                        <h1> {&post.title} </h1>
+                                        <p> {&post.content} </p>
+                                    </div>
+                                }
+                            }).collect::<Html>()
+                        }
                     </div>
                 </div>
             </section>
