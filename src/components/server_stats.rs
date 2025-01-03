@@ -1,5 +1,7 @@
 use serde::Deserialize;
 use reqwest;
+use crate::components::sensible_data;
+use crate::components::sensible_data::SERVER_URL;
 
 // Definir la estructura que coincide con los datos del JSON
 #[derive(Deserialize, Clone)]
@@ -11,7 +13,7 @@ pub struct ServerStats {
 }
 
 pub async fn fetch_server_stats() -> Result<ServerStats, reqwest::Error> {
-    let url = "";
+    let url = SERVER_URL;
     let response = reqwest::get(url).await?;
     let server_stats: ServerStats = response.json().await?;
     Ok(server_stats)

@@ -1,4 +1,5 @@
 /dist/
 /target/
-.idea/vcs.xml
+.idea/*
 *.md
+src/components/sensible_data.rs
