@@ -103,3 +103,47 @@ header {
     font-size: medium;
     color: grey;
 }
+
+.poderes-posts {
+    width: 95%;
+    margin: 0 auto;
+    padding-top: .8rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.poderes-player {
+    background-color: #1F2937;
+    width: 50%;
+    border-radius: 1rem;
+    padding-bottom: 1rem;
+}
+
+.poderes-player h2{
+    font-size: xx-large;
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 1rem;
+}
+
+.poderes-player p {
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 1rem;
+    color: grey;
+    padding-bottom: 1rem;
+}
+
+.poderes {
+    width: 95%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.poder {
+    background-color: #374151;
+    border-radius: 1rem;
+    text-align: center;
+}
