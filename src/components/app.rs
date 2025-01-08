@@ -121,7 +121,7 @@ pub fn App() -> Html {
                             <li class="nav-item"> <a href="#actualizaciones"> {"Actualizaciones"} </a></li>
                             <li class="nav-item"> <a href="#estadisticas"> {"Estadísticas"} </a></li>
                             <li class="nav-item"> <a href="#poderes"> {"Poderes"} </a></li>
-                            <li class="nav-item"> <a href="#"> {"Misiones"} </a></li>
+                            <li class="nav-item"> <a href="#misiones"> {"Misiones"} </a></li>
                             <li class="nav-item"> <a href="#"> {"Guías"} </a></li>
                         </ul>
                     </div>
@@ -204,6 +204,26 @@ pub fn App() -> Html {
                                 }
                             }).collect::<Html>()
                         }
+                    </div>
+                </div>
+            </section>
+            <section class="width-section" id="misiones">
+                <div class="actualizaciones-panel">
+                    <div class="actualizaciones-title">
+                        <img src="https://ponchisaohosting.xyz/downloads/cosmere/assets/espadas.webp" alt="Estadísticas" />
+                        <h1> {"Misiones y Recompensas"}</h1>
+                    </div>
+                    <div class="misiones-posts">
+                        <div class="misiones-panel">
+                            <h1>{"La Caida del Lord Legislador"}</h1>
+                            <p class="subtitle">{"Derrota al Lord Legislador y libera el Imperio Final."}</p>
+                            <p class="text">{"Recompensa: Título de 'Héroe de Luthadel' y set completo de metales alománticos"}</p>
+                        </div>
+                        <div class="misiones-panel">
+                            <h1>{"Maestro del Metal"}</h1>
+                            <p class="subtitle">{"Domina todas las habilidades alománticas y feruquímicas."}</p>
+                            <p class="text">{"Recompensa: Acceso a la dimensión secreta de Preservación"}</p>
+                        </div>
                     </div>
                 </div>
             </section>
