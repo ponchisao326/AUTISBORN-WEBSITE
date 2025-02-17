@@ -183,3 +183,63 @@ header {
 .misiones-panel {
     margin-bottom: .8rem;
 }
+
+.countdown-timer {
+    padding: 20px;
+    text-align: center;
+}
+
+.timer-display {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.time-unit {
+    display: flex;
+    flex-direction: column;
+    background: #2c3e50;
+    padding: 1rem;
+    border-radius: 8px;
+    min-width: 80px;
+}
+
+.number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ecf0f1;
+}
+
+.label {
+    font-size: 0.9rem;
+    color: #bdc3c7;
+    text-transform: uppercase;
+}
+
+.target-date {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin-top: 1rem;
+}
+
+/* Para pantallas medianas (tablets y pequeños notebooks) */
+@media only screen and (max-width: 1024px) {
+    .actualizaciones-title img {
+        width: 3%;
+    }
+}
+
+/* Para pantallas pequeñas (tablets en vertical) */
+@media only screen and (max-width: 768px) {
+    .actualizaciones-title img {
+        width: 4%;
+    }
+}
+
+/* Para dispositivos móviles (smartphones) */
+@media only screen and (max-width: 480px) {
+    .actualizaciones-title img {
+        width: 6%;
+    }
+}

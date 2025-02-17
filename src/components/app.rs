@@ -2,6 +2,9 @@ use yew::prelude::*;
 use crate::components::players_data::{fetch_player_effects, fetch_player_powers, PlayerPowers, Power};
 use crate::components::post::{Post, fetch_posts};
 use crate::components::server_stats::fetch_server_stats;
+use gloo_timers::callback::Interval;
+use js_sys::Date;
+use web_sys::console;
 
 #[function_component]
 pub fn App() -> Html {
@@ -109,6 +112,43 @@ pub fn App() -> Html {
         );
     }
 
+    // Dentro del componente App, añade este nuevo estado:
+    let time_left = use_state(|| (0, 0, 0, 0)); // (días, horas, minutos, segundos)
+
+    // Añade este efecto para el temporizador:
+    {
+        let time_left = time_left.clone();
+        use_effect_with_deps(
+            move |_| {
+                let handle = Interval::new(1000, move || {
+                    let target_date = Date::new_with_year_month_day_hr_min_sec(
+                        2025, 2, 20, // 25 de diciembre 2024 (meses 0-based)
+                        0, 0, 0
+                    );
+                    let now = Date::new_0();
+
+                    let difference = target_date.get_time() - now.get_time();
+
+                    if difference > 0.0 {
+                        let days = (difference / (1000.0 * 60.0 * 60.0 * 24.0)) as i64;
+                        let hours = ((difference % (1000.0 * 60.0 * 60.0 * 24.0)) / (1000.0 * 60.0 * 60.0)) as i64;
+                        let minutes = ((difference % (1000.0 * 60.0 * 60.0)) / (1000.0 * 60.0)) as i64;
+                        let seconds = ((difference % (1000.0 * 60.0)) / 1000.0) as i64;
+
+                        time_left.set((days, hours, minutes, seconds));
+                    } else {
+                        console::log_1(&"¡Tiempo cumplido!".into());
+                    }
+                });
+
+                move || {
+                    drop(handle);
+                }
+            },
+            (),
+        );
+    }
+
         html! {
         <main>
             <header>
@@ -122,16 +162,45 @@ pub fn App() -> Html {
                             <li class="nav-item"> <a href="#estadisticas"> {"Estadísticas"} </a></li>
                             <li class="nav-item"> <a href="#poderes"> {"Poderes"} </a></li>
                             <li class="nav-item"> <a href="#misiones"> {"Misiones"} </a></li>
-                            <li class="nav-item"> <a href="#"> {"Guías"} </a></li>
                         </ul>
                     </div>
                 </div>
             </header>
 
             <section class="width-section" id="actualizaciones">
+        <div class="actualizaciones-panel">
+            <div class="actualizaciones-title">
+                <h1>{"Próxima Actualización del Servidor"}</h1>
+            </div>
+            <div class="countdown-timer">
+                <div class="timer-display">
+                    <div class="time-unit">
+                        <span class="number">{time_left.0}</span>
+                        <span class="label">{"Días"}</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="number">{time_left.1}</span>
+                        <span class="label">{"Horas"}</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="number">{time_left.2}</span>
+                        <span class="label">{"Minutos"}</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="number">{time_left.3}</span>
+                        <span class="label">{"Segundos"}</span>
+                    </div>
+                </div>
+                <div class="target-date">
+                    {"Próxima actualización: 20 de Febrero 2025"}
+                </div>
+            </div>
+        </div>
+    </section>
+
+            <section class="width-section" id="actualizaciones">
                 <div class="actualizaciones-panel">
                     <div class="actualizaciones-title">
-                        <img src="https://ponchisaohosting.xyz/downloads/cosmere/assets/newspaper.webp" alt="Actualizaciones" />
                         <h1> {"Actualizaciones del Servidor"}</h1>
                     </div>
                     <div class="actualizaciones-posts">
@@ -152,7 +221,6 @@ pub fn App() -> Html {
             <section class="width-section" id="estadisticas">
                 <div class="actualizaciones-panel">
                     <div class="actualizaciones-title">
-                        <img src="https://ponchisaohosting.xyz/downloads/cosmere/assets/trophy.webp" alt="Estadísticas" />
                         <h1> {"Estadísticas Generales"}</h1>
                     </div>
                     <div class="estadisticas-posts">
@@ -179,7 +247,6 @@ pub fn App() -> Html {
             <section class="width-section" id="poderes">
                 <div class="actualizaciones-panel">
                     <div class="actualizaciones-title">
-                        <img src="https://ponchisaohosting.xyz/downloads/cosmere/assets/user.webp" alt="Estadísticas" />
                         <h1> {"Poderes de los Jugadores"}</h1>
                     </div>
                     <div class="poderes-posts">
@@ -210,19 +277,18 @@ pub fn App() -> Html {
             <section class="width-section" id="misiones">
                 <div class="actualizaciones-panel">
                     <div class="actualizaciones-title">
-                        <img src="https://ponchisaohosting.xyz/downloads/cosmere/assets/espadas.webp" alt="Estadísticas" />
                         <h1> {"Misiones y Recompensas"}</h1>
                     </div>
                     <div class="misiones-posts">
                         <div class="misiones-panel">
-                            <h1>{"La Caida del Lord Legislador"}</h1>
-                            <p class="subtitle">{"Derrota al Lord Legislador y libera el Imperio Final."}</p>
-                            <p class="text">{"Recompensa: Título de 'Héroe de Luthadel' y set completo de metales alománticos"}</p>
+                            <h1>{"PROXIMAMENTE"}</h1>
+                            <p class="subtitle">{"PROXIMAMENTE"}</p>
+                            <p class="text">{"PROXIMAMENTE"}</p>
                         </div>
                         <div class="misiones-panel">
-                            <h1>{"Maestro del Metal"}</h1>
-                            <p class="subtitle">{"Domina todas las habilidades alománticas y feruquímicas."}</p>
-                            <p class="text">{"Recompensa: Acceso a la dimensión secreta de Preservación"}</p>
+                            <h1>{"PROXIMAMENTE"}</h1>
+                            <p class="subtitle">{"PROXIMAMENTE"}</p>
+                            <p class="text">{"PROXIMAMENTE"}</p>
                         </div>
                     </div>
                 </div>
