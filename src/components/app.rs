@@ -67,8 +67,11 @@ pub fn App() -> Html {
             move |_| {
                 wasm_bindgen_futures::spawn_local(async move {
                     let players_urls = vec![
-                        "https://ponchisaohosting.xyz/downloads/cosmere/post/uploads/power_Dev.json", // Jugador 1
-                        "https://ponchisaohosting.xyz/downloads/cosmere/post/uploads/power_Dev2.json", // Jugador 2
+                        "https://ponchisaohosting.xyz/downloads/cosmere/post/uploads/power_Apin.json",
+                        "https://ponchisaohosting.xyz/downloads/cosmere/post/uploads/power_Ikertc.json",
+                        "https://ponchisaohosting.xyz/downloads/cosmere/post/uploads/power_Omega.json",
+                        "https://ponchisaohosting.xyz/downloads/cosmere/post/uploads/power_Ponchisao326.json",
+                        "https://ponchisaohosting.xyz/downloads/cosmere/post/uploads/power_Roval.json",
                     ];
 
                     let mut powers_data = Vec::new();
@@ -93,8 +96,11 @@ pub fn App() -> Html {
             move |_| {
                 wasm_bindgen_futures::spawn_local(async move {
                     let players_urls = vec![
-                        "https://ponchisaohosting.xyz/downloads/cosmere/post/uploads/effect_Dev.json",
-                        "https://ponchisaohosting.xyz/downloads/cosmere/post/uploads/effect_Dev2.json",
+                        "https://ponchisaohosting.xyz/downloads/cosmere/post/uploads/effect_Apin.json",
+                        "https://ponchisaohosting.xyz/downloads/cosmere/post/uploads/effect_Ikertc.json",
+                        "https://ponchisaohosting.xyz/downloads/cosmere/post/uploads/effect_Omega.json",
+                        "https://ponchisaohosting.xyz/downloads/cosmere/post/uploads/effect_Ponchisao326.json",
+                        "https://ponchisaohosting.xyz/downloads/cosmere/post/uploads/effect_Roval.json",
                     ];
 
                     let mut effects_data = Vec::new();
@@ -166,37 +172,6 @@ pub fn App() -> Html {
                     </div>
                 </div>
             </header>
-
-            <section class="width-section" id="actualizaciones">
-        <div class="actualizaciones-panel">
-            <div class="actualizaciones-title">
-                <h1>{"Próxima Actualización del Servidor"}</h1>
-            </div>
-            <div class="countdown-timer">
-                <div class="timer-display">
-                    <div class="time-unit">
-                        <span class="number">{time_left.0}</span>
-                        <span class="label">{"Días"}</span>
-                    </div>
-                    <div class="time-unit">
-                        <span class="number">{time_left.1}</span>
-                        <span class="label">{"Horas"}</span>
-                    </div>
-                    <div class="time-unit">
-                        <span class="number">{time_left.2}</span>
-                        <span class="label">{"Minutos"}</span>
-                    </div>
-                    <div class="time-unit">
-                        <span class="number">{time_left.3}</span>
-                        <span class="label">{"Segundos"}</span>
-                    </div>
-                </div>
-                <div class="target-date">
-                    {"Próxima actualización: 20 de Febrero 2025"}
-                </div>
-            </div>
-        </div>
-    </section>
 
             <section class="width-section" id="actualizaciones">
                 <div class="actualizaciones-panel">

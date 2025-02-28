@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -115,13 +119,16 @@ header {
     padding-top: .8rem;
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap; /* Añadir esto para permitir wrap en móviles */
 }
 
 .poderes-player {
     background-color: #1F2937;
-    width: 50%;
+    min-width: 300px; /* Ancho mínimo para mantener legibilidad */
+    flex: 1 1 calc(50% - 1rem); /* Crecer y encoger con base en el espacio */
     border-radius: 1rem;
     padding-bottom: 1rem;
+    box-sizing: border-box; /* Asegurar que el padding no afecte el ancho */
 }
 
 .poderes-player h2{
@@ -231,9 +238,14 @@ header {
 }
 
 /* Para pantallas pequeñas (tablets en vertical) */
-@media only screen and (max-width: 768px) {
-    .actualizaciones-title img {
-        width: 4%;
+@media (max-width: 768px) {
+    .poderes-player {
+        flex: 1 1 100%; /* Ocupar todo el ancho en móviles */
+        min-width: auto;
+    }
+
+    .estadisticas-posts {
+        grid-template-columns: 1fr; /* Cambiar a una columna en móviles */
     }
 }
 
